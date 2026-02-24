@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Model files (có thể bỏ comment nếu không muốn push model lên git)
+# models/*.pt
+# models/*.onnx
+# models/*.bin
+# models/*.xml
+
+# Test images (để tránh push ảnh test lên git)
+test_images/*
+!test_images/.gitkeep
+
+# Output files
+output/
+results/
+*.xlsx
+*_result.jpg
+*_result.png
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints

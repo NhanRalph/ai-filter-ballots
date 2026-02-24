@@ -1,0 +1,28 @@
+# Requirements cho Hệ thống Kiểm duyệt Phiếu bầu
+# BƯỚC 1: Các thư viện cơ bản cho ROI Detection
+
+# AI Model - YOLOv8
+ultralytics>=8.0.0
+
+# Computer Vision
+opencv-python>=4.8.0
+opencv-contrib-python>=4.8.0
+
+# Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Excel Export (sẽ dùng ở BƯỚC 2)
+openpyxl>=3.1.0
+
+# GUI (sẽ dùng ở BƯỚC 3)
+customtkinter>=5.2.0
+Pillow>=10.0.0
+
+# Tối ưu hóa (BƯỚC 4)
+onnx>=1.14.0
+onnxruntime>=1.15.0
+# openvino>=2023.0.0  # Optional: chỉ cần nếu dùng Intel CPU optimization
+
+# Build & Packaging
+pyinstaller>=5.13.0
