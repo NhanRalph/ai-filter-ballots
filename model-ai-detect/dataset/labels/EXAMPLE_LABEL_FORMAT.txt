@@ -1,0 +1,80 @@
+# Example Label File
+# File: phieu_001.txt (tương ứng với ảnh phieu_001.jpg)
+
+# Format: class_id x_center y_center width height
+# Tất cả tọa độ đã normalized (0-1)
+
+# Dấu X thứ 1 (ở vị trí gần giữa-trái)
+0 0.312 0.445 0.089 0.123
+
+# Dấu X thứ 2 (ở vị trí giữa-phải)
+0 0.678 0.456 0.098 0.145
+
+# Dấu X thứ 3 (ở vị trí dưới-trái)
+0 0.289 0.789 0.091 0.134
+
+
+# ============================================================================
+# GIẢI THÍCH FORMAT
+# ============================================================================
+#
+# Mỗi dòng = 1 bounding box (1 dấu X)
+# Format: class_id x_center y_center width height
+#
+# class_id: 
+#   - 0 = cross (dấu X)
+#   - Chỉ có 1 class nên luôn là 0
+#
+# x_center:
+#   - Tọa độ X tâm bounding box
+#   - Normalized: 0-1
+#   - 0 = cạnh trái ảnh
+#   - 1 = cạnh phải ảnh
+#   - 0.5 = giữa ảnh
+#
+# y_center:
+#   - Tọa độ Y tâm bounding box
+#   - Normalized: 0-1
+#   - 0 = cạnh trên ảnh
+#   - 1 = cạnh dưới ảnh
+#   - 0.5 = giữa ảnh
+#
+# width:
+#   - Chiều rộng bounding box
+#   - Normalized: 0-1
+#   - 0.1 = 10% chiều rộng ảnh
+#
+# height:
+#   - Chiều cao bounding box
+#   - Normalized: 0-1
+#   - 0.1 = 10% chiều cao ảnh
+#
+# ============================================================================
+# VÍ DỤ TÍNH TOÁN
+# ============================================================================
+#
+# Giả sử ảnh có kích thước: 1920x1080 pixels
+# Bounding box dấu X ở pixel coordinates:
+#   - x_min = 500, y_min = 300
+#   - x_max = 700, y_max = 450
+#
+# Tính normalized coordinates:
+#   x_center = ((500 + 700) / 2) / 1920 = 600 / 1920 = 0.3125
+#   y_center = ((300 + 450) / 2) / 1080 = 375 / 1080 = 0.3472
+#   width = (700 - 500) / 1920 = 200 / 1920 = 0.1042
+#   height = (450 - 300) / 1080 = 150 / 1080 = 0.1389
+#
+# Kết quả dòng trong file .txt:
+#   0 0.3125 0.3472 0.1042 0.1389
+#
+# ============================================================================
+# TIPS
+# ============================================================================
+#
+# 1. Dùng annotation tools (Label Studio, Roboflow) để tự động tính toán
+# 2. Không cần tính tay, tools sẽ export ra file .txt đúng format
+# 3. File .txt phải cùng tên với ảnh (chỉ khác extension)
+# 4. Mỗi dòng = 1 object detection (1 dấu X)
+# 5. Nếu không có dấu X nào, file .txt để trống (hoặc xóa file)
+#
+# ============================================================================

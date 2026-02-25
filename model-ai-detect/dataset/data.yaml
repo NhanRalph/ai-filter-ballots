@@ -1,0 +1,105 @@
+# Dataset Configuration for YOLOv8
+# Cấu hình dataset cho ballot cross detection
+
+# Đường dẫn dataset (relative to this file)
+path: ../dataset  # Root dataset folder
+train: images/train  # Train images (relative to 'path')
+val: images/val      # Val images (relative to 'path')
+test: images/test    # Test images (relative to 'path', optional)
+
+# Classes
+nc: 1  # Number of classes
+names:
+  0: cross  # Class name
+
+
+# ============================================================================
+# HƯỚNG DẪN SỬ DỤNG
+# ============================================================================
+#
+# 1. CHUẨN BỊ DATASET:
+#
+#    dataset/
+#    ├── images/
+#    │   ├── train/          ← Đặt ảnh training ở đây (70%)
+#    │   │   ├── phieu_001.jpg
+#    │   │   ├── phieu_002.jpg
+#    │   │   └── ...
+#    │   ├── val/            ← Đặt ảnh validation ở đây (15%)
+#    │   └── test/           ← Đặt ảnh test ở đây (15%)
+#    │
+#    ├── labels/
+#    │   ├── train/          ← File nhãn training (.txt)
+#    │   │   ├── phieu_001.txt
+#    │   │   ├── phieu_002.txt
+#    │   │   └── ...
+#    │   ├── val/            ← File nhãn validation
+#    │   └── test/           ← File nhãn test
+#    │
+#    └── data.yaml           ← File này
+#
+#
+# 2. FORMAT FILE NHÃN (YOLO format):
+#
+#    Mỗi ảnh phieu_001.jpg cần 1 file nhãn phieu_001.txt
+#    
+#    Format mỗi dòng trong .txt:
+#    class_id x_center y_center width height
+#    
+#    Ví dụ:
+#    0 0.512 0.345 0.089 0.123
+#    0 0.678 0.456 0.098 0.145
+#    
+#    Trong đó:
+#    - class_id: 0 (cross)
+#    - x_center: Tâm bounding box (normalized 0-1)
+#    - y_center: Tâm bounding box (normalized 0-1)
+#    - width: Chiều rộng box (normalized 0-1)
+#    - height: Chiều cao box (normalized 0-1)
+#    
+#    NORMALIZED nghĩa là:
+#    - x_center = (x_pixel) / (image_width)
+#    - y_center = (y_pixel) / (image_height)
+#    - width = (box_width_pixel) / (image_width)
+#    - height = (box_height_pixel) / (image_height)
+#
+#
+# 3. ANNOTATION TOOLS:
+#
+#    Option 1: Label Studio (Free, Local)
+#    - Download: https://labelstud.io/
+#    - Install: pip install label-studio
+#    - Chạy: label-studio start
+#    - Export format: YOLO
+#    
+#    Option 2: Roboflow (Free cloud)
+#    - Website: https://roboflow.com/
+#    - Upload ảnh → Annotate → Export YOLO format
+#    - Auto-download về đúng cấu trúc folder
+#    
+#    Option 3: LabelImg (Simple, Local)
+#    - Install: pip install labelImg
+#    - Chạy: labelImg
+#    - Save format: YOLO
+#
+#
+# 4. KIỂM TRA DATASET:
+#
+#    - Mỗi ảnh .jpg phải có file .txt tương ứng
+#    - Tên file phải giống nhau (chỉ khác extension)
+#    - Minimum: 100 ảnh (50 train, 25 val, 25 test)
+#    - Recommended: 500+ ảnh
+#
+#
+# 5. TRAINING:
+#
+#    python train_model.py
+#
+#    Hoặc:
+#
+#    from ultralytics import YOLO
+#    model = YOLO('yolov8n.pt')
+#    model.train(data='dataset/data.yaml', epochs=100)
+#
+#
+# ============================================================================
